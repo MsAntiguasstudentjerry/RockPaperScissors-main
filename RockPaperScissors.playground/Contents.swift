@@ -41,7 +41,7 @@ func getUserChoice(userInput : String) -> String{
  Call the function, ***getUserChoice(userInput:)***, and pass in an argument for userInput. Wrap the function in a print() statement.
 
  */
-print(getUserChoice(userInput:"rock")) //why isn't it printing
+print(getUserChoice(userInput:"rock"))
 /*:
  
  ### Computer Choice
@@ -70,9 +70,9 @@ func getComputerChoice() -> String{
     case 2:
         return "scissors"
     default:
-        "Something went wrong"
+        return "Something went wrong"
     }
-    
+    return ""
 }
 
 
@@ -108,10 +108,43 @@ func getComputerChoice() -> String{
  Below the final case, add a defaultstatement that prints, "Something went wrong".
  Conclude the function with a statement that returns decision.
  */
-func determineWinner(_userChoice:String,_compChoice:String){
+func determineWinner(_ userChoice:String,_ compChoice:String) -> String{
+    var decision = "It's a tie"
     
-    
-    
+    switch userChoice{
+        
+    case "rock":
+        if compChoice == "paper"{
+            decision =  "Computer Wins"
+        }
+        
+        else if compChoice == "scissors"
+        {
+            decision = "User wins"
+        }
+        
+    case "paper":
+        if compChoice == "scissors"{
+            decision =  "Computer Wins"
+        }
+        
+        else if compChoice == "rock"{
+            decision =  "User Wins"
+        }
+        
+    case "scissors":
+        if compChoice == "rock"{
+            decision =  "Computer Wins"
+        }
+        
+        else if compChoice == "paper"{
+            decision =  "User Wins"
+        }
+        
+    default:
+        return decision
+    }
+    return decision
 }
 
 
@@ -121,7 +154,11 @@ Use string interpolation in the second print() statement to output: "The compute
 Call the determineWinner() function and pass in the variables, userChoiceand compChoice, as arguments.
 
 */
-
+var user = getUserChoice(userInput: "paper")
+var comp = getComputerChoice()
+print("You threw \(user)")
+print("The computer threw \(comp)")
+print(determineWinner(user, comp))
 
 /*:
 Excellent work! 👏 You’ve utilized your knowledge of functions and previous fundamental Swift concepts to create a rock, paper, scissors game.
